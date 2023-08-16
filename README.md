@@ -13,6 +13,11 @@ A messaging app, built on React , which stores it's data in firestore database w
 LIST OF FEATURES:
 
 Login and Users Registration (Authentication)
+
 Multi user
+
+
 can change profile pictures
+
+
 Seperate chats 
