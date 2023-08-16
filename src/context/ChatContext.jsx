@@ -41,10 +41,10 @@ export const ChatContextProvider = ({ children }) => {
       }
     }
 
-    const [state,dispath] = useReducer(chatReducer, INITAL_STATE)
+    const [state,dispatch] = useReducer(chatReducer, INITAL_STATE)
 
   return (          // it means that currentUser can reach all the componets ie childern
-    <ChatContext.Provider value={{data:state , dispath}}>
+    <ChatContext.Provider value={{data:state , dispatch}}>
       {children}
     </ChatContext.Provider>
   );

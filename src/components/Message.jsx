@@ -8,14 +8,35 @@ const Message = ({ message }) => {
 
   const ref = useRef();
 
-  useEffect(() => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-  }, [message]);
+  // useEffect(() => {
+  //   ref.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [message]);
+
+  // return (
+    // <div className={`Message ${message.senderId === currentUser.uid && "Owner"}`} >
+    //   <div className="messageInfo">
+    //     <img
+    //       src={
+    //         message.senderId === currentUser.uid
+    //           ? currentUser.photoURL
+    //           : data.user.photoURL
+    //       }
+    //       alt="aeo"
+    //     />
+    //     <span>just now</span>
+    //   </div>
+    //   <div className="messageContent">
+    //     <p>{message.text}</p>
+    //     {message.img && <img src={message.img} alt="" />}
+    //   </div>
+    // </div>
+  // )
+
 
   return (
     <div
       ref={ref}
-      className={`message ${message.senderId === currentUser.uid && "owner"}`}
+      className={`Message ${message.senderId === currentUser.uid && "Owner"}`}
     >
       <div className="messageInfo">
         <img

@@ -24,9 +24,7 @@ const Input = () => {
   const handleSend = async () => {
     if (img) {
       const storageRef = ref(storage, uuid());
-
-      const uploadTask = uploadBytesResumable(storageRef, img);
-
+      const uploadTask = uploadBytesResumable(storageRef, img);``
       uploadTask.on(
         (error) => {
           //TODO:Handle Error
@@ -73,6 +71,11 @@ const Input = () => {
     setText("");
     setImg(null);
   };
+
+
+
+
+
   return (
     <div className="input">
       <input
