@@ -10,28 +10,45 @@ import { useNavigate, Link } from 'react-router-dom'
   
 
 const Register = () => {
-  const [err, setErr] = useState(false)
+  const [err, setErr] = useState(null);
+
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleSubmit = async e => {
     setLoading(true)
+    setErr(null);
     e.preventDefault()
     const displayName = e.target[0].value
     const email = e.target[1].value
     const password = e.target[2].value
     const file = e.target[3].files[0]
 
+    console.log(file);
+
+
     try {
       //Create user
-      const res = await createUserWithEmailAndPassword(auth, email, password)
       
+
+        const res = await createUserWithEmailAndPassword(auth, email, password)
+      
+    
+
+      // console.log(res)
+      console.log("user created")
       //Create a unique image name
       const date = new Date().getTime()
       const storageRef = ref(storage, `${displayName + date}`)
+   
 
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async downloadURL => {
+          console.log(file);
+          if(file == undefined){
+            downloadURL = "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2281862025.jpg";
+          }
+
           try {
             //Update profile
             await updateProfile(res.user, {
@@ -57,8 +74,8 @@ const Register = () => {
         })
       })
     } catch (err) {
-      setErr(true)
-      setLoading(false)
+      setErr(err.message)
+      // setLoading(false)
     }
   }
 
@@ -77,7 +94,7 @@ const Register = () => {
             <span>Add an avatar</span>
           </label>
           <input type='submit' value='Register' />
-          {err && <span> Something went wrong</span>}
+          {err != null  && <span> {err}</span>}
         </form>
         <p>
           You do have an account ?<Link to = "/login">Login</Link>

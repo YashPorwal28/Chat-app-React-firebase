@@ -32,6 +32,8 @@ const Message = ({ message }) => {
     // </div>
   // )
 
+  // console.log(message)
+
 
   return (
     <div
@@ -50,8 +52,12 @@ const Message = ({ message }) => {
         <span>just now</span>
       </div>
       <div className="messageContent">
-        <p>{message.text}</p>
-        {message.img && <img src={message.img} alt="" />}
+       { message.text !== "" &&<p>{  message.text}</p>}
+
+    
+          
+          {message.img && <img src={message.img} alt="" />}
+         
       </div>
     </div>
   );

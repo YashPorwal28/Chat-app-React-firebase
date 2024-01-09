@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
     const unsub = onAuthStateChanged(auth, (user) => {
         // if user is present
       setCurrentUser(user);
-      console.log(user);
+      // console.log(user);
     });
     // cleanup function to stop memory leaking
     return () => {
