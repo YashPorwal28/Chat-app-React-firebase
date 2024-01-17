@@ -6,15 +6,10 @@ import { auth, storage, db } from '../firebas'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { useNavigate, Link } from 'react-router-dom'
 
-
-  
-
 const Register = () => {
   const [err, setErr] = useState(null);
-
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-
   const handleSubmit = async e => {
     setLoading(true)
     setErr(null);
@@ -23,18 +18,11 @@ const Register = () => {
     const email = e.target[1].value
     const password = e.target[2].value
     const file = e.target[3].files[0]
-
     console.log(file);
-
-
     try {
-      //Create user
-      
-
+      //Create user      
         const res = await createUserWithEmailAndPassword(auth, email, password)
-      
-    
-
+         
       // console.log(res)
       console.log("user created")
       //Create a unique image name
